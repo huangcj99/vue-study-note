@@ -574,10 +574,12 @@ var targetStack = [];
 function pushTarget (_target) {
   if (Dep.target) { targetStack.push(Dep.target); }
   Dep.target = _target;
+  console.log(Dep.target);
 }
 
 function popTarget () {
   Dep.target = targetStack.pop();
+  console.log(Dep.target)
 }
 
 /*  */
@@ -2224,7 +2226,7 @@ function renderMixin (Vue) {
     var render = ref.render;
     var staticRenderFns = ref.staticRenderFns;
     var _parentVnode = ref._parentVnode;
-
+    // console.log(vm._isMounted);console.log(render);
     if (vm._isMounted) {
       // clone slot nodes on re-renders
       for (var key in vm.$slots) {
@@ -2240,6 +2242,7 @@ function renderMixin (Vue) {
     vm.$vnode = _parentVnode;
     // render self
     var vnode;
+    // console.log(vm.$createElement);
     try {
       vnode = render.call(vm._renderProxy, vm.$createElement);
     } catch (e) {
@@ -2272,6 +2275,7 @@ function renderMixin (Vue) {
     }
     // set parent
     vnode.parent = _parentVnode;
+    // console.log(vnode);
     return vnode
   };
 
@@ -7436,9 +7440,9 @@ function compileToFunctions (
       );
     }
   }
-  console.log(key);
-  console.log(res);
-  console.log(cache);
+  // console.log(key);
+  // console.log(res);
+  // console.log(cache);
   return (cache[key] = res)
 }
 
