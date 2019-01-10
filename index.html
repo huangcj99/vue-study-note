@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
-<div>
   <div>
-    <div id="app">
-      <p>{{ a }}</p>
-      <p>{{ b }}</p>
+    <div>
+      <div id="app">
+        <p v-show="bool">{{ a }}</p>
+        <p v-html="b"></p>
+        <p>{{ c }}</p>
+      </div>
     </div>
   </div>
-</div>
 
-<script src="./vue.js"></script>
-<script src="test.js"></script>
+  <script src="./vue.js"></script>
+  <script src="test.js"></script>
 </body>
+
 </html>

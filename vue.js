@@ -574,12 +574,12 @@ var targetStack = [];
 function pushTarget (_target) {
   if (Dep.target) { targetStack.push(Dep.target); }
   Dep.target = _target;
-  console.log(Dep.target);
+  // console.log(Dep.target);
 }
 
 function popTarget () {
   Dep.target = targetStack.pop();
-  console.log(Dep.target)
+  // console.log(Dep.target)
 }
 
 /*  */
@@ -747,6 +747,7 @@ Watcher.prototype.get = function get () {
   }
   popTarget();
   this.cleanupDeps();
+  // console.log('----Watcher-----');console.log(this);
   return value
 };
 
@@ -809,6 +810,8 @@ Watcher.prototype.update = function update () {
 Watcher.prototype.run = function run () {
   if (this.active) {
     var value = this.get();
+    // console.log("------Watcher.run-----");console.log(value);
+    // console.log(this.deep);
       if (
         value !== this.value ||
       // Deep watchers and watchers on Object/Arrays should fire even
@@ -817,6 +820,7 @@ Watcher.prototype.run = function run () {
       isObject(value) ||
       this.deep
     ) {
+      // console.log('run');console.log()
       // set new value
       var oldValue = this.value;
       this.value = value;
@@ -1085,7 +1089,7 @@ function defineReactive$$1 (
   customSetter
 ) {
   var dep = new Dep();
-
+  // console.log('----------dep');console.log(dep);
   var property = Object.getOwnPropertyDescriptor(obj, key);
   if (property && property.configurable === false) {
     return
@@ -1094,7 +1098,7 @@ function defineReactive$$1 (
   // cater for pre-defined getter/setters
   var getter = property && property.get;
   var setter = property && property.set;
-
+  // console.log('--getter setter---');console.log(getter);console.log(setter);
   var childOb = observe(val);
   Object.defineProperty(obj, key, {
     enumerable: true,
